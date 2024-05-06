@@ -6,8 +6,23 @@ const decimalToBinary = (input) => {
   const inputs = [];
   const quotients = [];
   const remainders = [];
-  input = 0;
-  while (input > 0) {}
+  if (input === 0) {
+    result.innerText = "0";
+    return;
+  }
+  while (input > 0) {
+    const quotient = Math.floor(input / 2);
+    const remainder = input % 2;
+    inputs.push(input);
+    quotients.push(quotient);
+    remainders.push(remainder);
+    input = quotient;
+  }
+  console.log("Inputs: ", inputs);
+  console.log("Quotients: ", quotients);
+  console.log("Remainders: ", remainders);
+  remainders.reverse().join("");
+  result.innerText = remainders.join("");
 };
 const checkUserInput = () => {
   if (!numberInput.value || isNaN(parseInt(numberInput.value))) {
